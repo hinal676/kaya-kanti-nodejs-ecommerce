@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kaya Kanti - Celebrating Indian Beauty</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="/public/styles.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/" class="logo-link"
+          ><img
+            src="/public/kaya-kanti-logo.png"
+            alt="Kaya Kanti"
+            class="logo" /><img
+            src="/public/kaya-kanti-brand.png"
+            alt="Kaya Kanti Brand"
+            class="brand-name"
+        /></a>
+        <ul class="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/products">Products</a></li>
+          <li>
+            <a href="/cart" class="cart-link"
+              ><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+              Cart</a
+            >
+          </li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Carousel Section -->
+      <div class="carousel">
+        <div class="carousel-slide active">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0569/2375/0423/t/5/assets/description_image_25.jpg?v=1648779597"
+            alt="Premium Skincare"
+          />
+          <div class="carousel-overlay">
+            <div class="carousel-content">
+              <h2 style="font-size: 2.5rem; margin-bottom: 1rem">
+                Celebrating Indian Beauty
+              </h2>
+              <p style="font-size: 1.2rem; margin-bottom: 1.5rem">
+                Nature's finest ingredients for radiant skin
+              </p>
+              <a href="/products" class="cta-button">Shop Skincare</a>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <img
+            src="https://static.vecteezy.com/system/resources/thumbnails/075/344/184/small_2x/beautiful-woman-holding-a-skincare-product-container-in-golden-hour-light-photo.jpg"
+            alt="Hair Care Collection"
+          />
+          <div class="carousel-overlay">
+            <div class="carousel-content">
+              <h2 style="font-size: 2.5rem; margin-bottom: 1rem">
+                Luscious Locks Care
+              </h2>
+              <p style="font-size: 1.2rem; margin-bottom: 1.5rem">
+                Organic treatments for healthy, beautiful hair
+              </p>
+              <a href="/products" class="cta-button">Explore Hair Care</a>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <img
+            src="https://img.freepik.com/free-photo/medium-shot-korean-woman-posing-with-face-cream_23-2150171968.jpg?semt=ais_wordcount_boost&w=740&q=80"
+            alt="Total Beauty Ritual"
+          />
+          <div class="carousel-overlay">
+            <div class="carousel-content">
+              <h2 style="font-size: 2.5rem; margin-bottom: 1rem">
+                Complete Beauty Ritual
+              </h2>
+              <p style="font-size: 1.2rem; margin-bottom: 1.5rem">
+                Traditional Indian formulas for modern beauty
+              </p>
+              <a href="/products" class="cta-button">Discover All</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-controls">
+          <span class="carousel-dot active" onclick="currentSlide(1)"></span>
+          <span class="carousel-dot" onclick="currentSlide(2)"></span>
+          <span class="carousel-dot" onclick="currentSlide(3)"></span>
+        </div>
+
+        <button class="carousel-arrow prev" onclick="changeSlide(-1)">
+          &#10094;
+        </button>
+        <button class="carousel-arrow next" onclick="changeSlide(1)">
+          &#10095;
+        </button>
+      </div>
+
+      <!-- Skin Care Products -->
+      <section class="section" style="background-color: var(--ivory)">
+        <div class="container">
+          <h2 class="section-title">Skin Care Collection</h2>
+          <p class="section-subtitle">
+            Organic formulas crafted for radiant, healthy skin
+          </p>
+          <div class="products-grid">{%SKIN_CARE_PRODUCTS%}</div>
+          <div style="text-align: center; margin-top: 2rem">
+            <a href="/products" class="cta-button"
+              >View All Skin Care Products</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- Hair Care Products -->
+      <section
+        class="section"
+        style="background-color: #f8f3ee; padding-top: 20px"
+      >
+        <div class="container">
+          <h2 class="section-title">Hair Care Collection</h2>
+          <p class="section-subtitle">
+            Nourishing treatments for lustrous, healthy hair
+          </p>
+          <div class="products-grid">{%HAIR_CARE_PRODUCTS%}</div>
+          <div style="text-align: center; margin-top: 2rem">
+            <a href="/products" class="cta-button"
+              >View All Hair Care Products</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- Benefits Section -->
+      <section class="benefits-section">
+        <div class="container">
+          <h2 class="section-title">Why Kaya Kanti?</h2>
+          <p class="section-subtitle">
+            Rooted in Indian beauty traditions, enhanced with modern science
+          </p>
+          <div class="benefits-grid">
+            <div class="benefit-card">
+              <div class="benefit-icon">🌿</div>
+              <h3>100% Natural</h3>
+              <p>
+                Crafted with traditional Indian ingredients. No harmful
+                chemicals or synthetic additives.
+              </p>
+            </div>
+            <div class="benefit-card">
+              <div class="benefit-icon">✨</div>
+              <h3>Time-Tested</h3>
+              <p>
+                Formulae inspired by centuries-old Indian beauty secrets
+                combined with modern efficacy.
+              </p>
+            </div>
+            <div class="benefit-card">
+              <div class="benefit-icon">🌍</div>
+              <h3>Eco-Conscious</h3>
+              <p>
+                Sustainable practices and ethically sourced ingredients
+                supporting Indian communities.
+              </p>
+            </div>
+            <div class="benefit-card">
+              <div class="benefit-icon">💚</div>
+              <h3>Cruelty-Free</h3>
+              <p>
+                Never tested on animals. Honoring all living beings in our
+                beauty journey.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section class="testimonials-section">
+        <div class="container">
+          <h2 class="section-title">Customer Love</h2>
+          <p class="section-subtitle">What our happy customers say</p>
+          <div class="testimonials-grid">
+            <div class="testimonial-card">
+              <p class="testimonial-text">
+                "Finally found products that celebrate Indian beauty! My skin
+                has never looked better and I love supporting homegrown brands."
+              </p>
+              <p class="testimonial-author">— Priya S.</p>
+              <p class="testimonial-rating">⭐⭐⭐⭐⭐</p>
+            </div>
+            <div class="testimonial-card">
+              <p class="testimonial-text">
+                "The hair care line is incredible! My hair feels so healthy and
+                the ingredients are pure and traditional."
+              </p>
+              <p class="testimonial-author">— Ananya M.</p>
+              <p class="testimonial-rating">⭐⭐⭐⭐⭐</p>
+            </div>
+            <div class="testimonial-card">
+              <p class="testimonial-text">
+                "I'm amazed by how this brand combines ancient Indian wisdom
+                with modern skincare science. Absolutely worth it!"
+              </p>
+              <p class="testimonial-author">— Sneha L.</p>
+              <p class="testimonial-rating">⭐⭐⭐⭐⭐</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Call to Action -->
+      <section
+        class="hero"
+        style="
+          background-color: #e8dde8;
+          color: var(--dark-gray);
+          border-top: 3px solid var(--gold);
+        "
+      >
+        <div class="hero-content">
+          <h2
+            style="
+              font-size: 3.2rem;
+              margin-bottom: 1rem;
+              color: var(--dark-gray);
+              font-family: &quot;Playfair Display&quot;, Georgia, serif;
+              font-weight: 700;
+            "
+          >
+            Embrace Your Natural Beauty
+          </h2>
+          <p
+            class="hero-description"
+            style="color: var(--dark-gray); font-size: 1.05rem"
+          >
+            Join the Kaya Kanti community and celebrate the beauty of Indian
+            traditions
+          </p>
+          <a href="/products" class="cta-button">Explore Collection</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>About Kaya Kanti</h4>
+          <p style="color: rgba(255, 255, 255, 0.8)">
+            We celebrate Indian beauty through natural, traditional, and
+            effective skincare and haircare products.
+          </p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/products">Products</a></li>
+            <li><a href="/cart">Cart</a></li>
+            <li><a href="/checkout">Checkout</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="/contact">Contact Us</a></li>
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="/contact#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Follow Us</h4>
+          <ul>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li>
+              <a href="https://www.pinterest.com/KayaKanti/">Pinterest</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Kaya Kanti. Celebrating Indian Beauty. Made with 💚</p>
+      </div>
+    </footer>
+
+    <script>
+      let currentSlideIndex = 1;
+
+      function changeSlide(n) {
+        showSlide((currentSlideIndex += n));
+      }
+
+      function currentSlide(n) {
+        showSlide((currentSlideIndex = n));
+      }
+
+      function showSlide(n) {
+        const slides = document.querySelectorAll(".carousel-slide");
+        const dots = document.querySelectorAll(".carousel-dot");
+
+        if (n > slides.length) {
+          currentSlideIndex = 1;
+        }
+        if (n < 1) {
+          currentSlideIndex = slides.length;
+        }
+
+        slides.forEach((slide) => slide.classList.remove("active"));
+        dots.forEach((dot) => dot.classList.remove("active"));
+
+        slides[currentSlideIndex - 1].classList.add("active");
+        dots[currentSlideIndex - 1].classList.add("active");
+      }
+
+      // Auto-advance slides every 5 seconds
+      setInterval(() => {
+        changeSlide(1);
+      }, 5000);
+
+      // Simple cart counter update
+      function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+        const cartLink = document.querySelector(".cart-link");
+        const count = cart.length;
+        if (count > 0) {
+          if (!document.querySelector(".cart-count")) {
+            const countBadge = document.createElement("span");
+            countBadge.className = "cart-count";
+            countBadge.textContent = count;
+            cartLink.appendChild(countBadge);
+          } else {
+            document.querySelector(".cart-count").textContent = count;
+          }
+        }
+      }
+      updateCartCount();
+    </script>
+    <script>
+      (function () {
+        var path = window.location.pathname;
+        document
+          .querySelectorAll(".nav-links a:not(.cart-link)")
+          .forEach(function (link) {
+            var href = link.getAttribute("href");
+            if (
+              href === path ||
+              (href === "/products" &&
+                (path === "/products" || path === "/product"))
+            ) {
+              link.classList.add("active");
+            }
+          });
+      })();
+    </script>
+  </body>
+</html>

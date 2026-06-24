@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products - Kaya Kanti</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="/public/styles.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/" class="logo-link"
+          ><img
+            src="/public/kaya-kanti-logo.png"
+            alt="Kaya Kanti"
+            class="logo" /><img
+            src="/public/kaya-kanti-brand.png"
+            alt="Kaya Kanti Brand"
+            class="brand-name"
+        /></a>
+        <ul class="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/products">Products</a></li>
+          <li>
+            <a href="/cart" class="cart-link"
+              ><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+              Cart</a
+            >
+          </li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main style="background-color: #f8f3ee">
+      <!-- Page Header -->
+      <section class="hero" style="padding: 40px 20px">
+        <div class="hero-content">
+          <h1
+            class="section-title"
+            style="
+              display: inline-block;
+              padding-bottom: 0.5rem;
+              font-size: 3.2rem;
+            "
+          >
+            Our Collection
+          </h1>
+          <p class="hero-subtitle">
+            Explore our complete range of Kaya Kanti beauty essentials
+          </p>
+        </div>
+      </section>
+
+      <!-- Products -->
+      <section class="section">
+        <div class="container">
+          <div class="products-grid">{%ALL_PRODUCTS%}</div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>About Kaya Kanti</h4>
+          <p style="color: rgba(255, 255, 255, 0.8)">
+            Celebrating Indian beauty through natural skincare and haircare
+            products.
+          </p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/products">Products</a></li>
+            <li><a href="/cart">Cart</a></li>
+            <li><a href="/checkout">Checkout</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="/contact">Contact Us</a></li>
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="/contact#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Follow Us</h4>
+          <ul>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li>
+              <a href="https://www.pinterest.com/KayaKanti/">Pinterest</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Kaya Kanti. Celebrating Indian Beauty. Made with 💚</p>
+      </div>
+    </footer>
+
+    <script>
+      function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+        const cartLink = document.querySelector(".cart-link");
+        const count = cart.length;
+        if (count > 0) {
+          if (!document.querySelector(".cart-count")) {
+            const countBadge = document.createElement("span");
+            countBadge.className = "cart-count";
+            countBadge.textContent = count;
+            cartLink.appendChild(countBadge);
+          } else {
+            document.querySelector(".cart-count").textContent = count;
+          }
+        }
+      }
+      updateCartCount();
+    </script>
+    <script>
+      (function () {
+        var path = window.location.pathname;
+        document
+          .querySelectorAll(".nav-links a:not(.cart-link)")
+          .forEach(function (link) {
+            var href = link.getAttribute("href");
+            if (
+              href === path ||
+              (href === "/products" &&
+                (path === "/products" || path === "/product"))
+            ) {
+              link.classList.add("active");
+            }
+          });
+      })();
+    </script>
+  </body>
+</html>

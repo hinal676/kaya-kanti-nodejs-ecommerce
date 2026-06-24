@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping Cart - Kaya Kanti</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="/public/styles.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/" class="logo-link"
+          ><img
+            src="/public/kaya-kanti-logo.png"
+            alt="Kaya Kanti"
+            class="logo" /><img
+            src="/public/kaya-kanti-brand.png"
+            alt="Kaya Kanti Brand"
+            class="brand-name"
+        /></a>
+        <ul class="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/products">Products</a></li>
+          <li>
+            <a href="/cart" class="cart-link"
+              ><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+              Cart</a
+            >
+          </li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main style="background-color: #f8f3ee">
+      <!-- Page Header -->
+      <section class="hero" style="padding: 40px 20px">
+        <div class="hero-content">
+          <h1
+            class="section-title"
+            style="
+              display: inline-block;
+              padding-bottom: 0.5rem;
+              font-size: 3.2rem;
+            "
+          >
+            Shopping Cart
+          </h1>
+          <p class="hero-subtitle">
+            Every great look starts with the right essentials — treat yourself!
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="cart-container">
+            <div>
+              <div class="cart-items">
+                <div id="cartItemsContainer">
+                  <div class="empty-cart">
+                    <p>Your cart is empty</p>
+                    <a href="/products" class="cta-button">Continue Shopping</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="cart-summary">
+                <h3 style="color: var(--dark-gray); margin-bottom: 1.5rem">
+                  Order Summary
+                </h3>
+                <div class="summary-row">
+                  <span class="summary-label">Subtotal</span>
+                  <span class="summary-value" id="subtotal">₹0.00</span>
+                </div>
+                <div class="summary-row">
+                  <span class="summary-label">Shipping</span>
+                  <span class="summary-value">Free</span>
+                </div>
+                <div class="summary-row">
+                  <span class="summary-label">Tax (10%)</span>
+                  <span class="summary-value" id="tax">₹0.00</span>
+                </div>
+                <div class="summary-row total">
+                  <span>Total</span>
+                  <span id="total">₹0.00</span>
+                </div>
+                <a
+                  href="/checkout"
+                  class="checkout-btn"
+                  onclick="return validateCart();"
+                  >Proceed to Checkout</a
+                >
+                <a
+                  href="/products"
+                  class="cta-button secondary-button"
+                  style="display: block; text-align: center; margin-top: 1rem"
+                  >Continue Shopping</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>About Us</h4>
+          <p style="color: rgba(255, 255, 255, 0.8)">
+            We're dedicated to providing premium organic skincare and haircare
+            products that nourish your natural beauty.
+          </p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/products">Products</a></li>
+            <li><a href="/cart">Cart</a></li>
+            <li><a href="/checkout">Checkout</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Customer Service</h4>
+          <ul>
+            <li><a href="/contact">Contact Us</a></li>
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="/contact#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Connect With Us</h4>
+          <ul>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li>
+              <a href="https://www.pinterest.com/KayaKanti/">Pinterest</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Kaya Kanti. Celebrating Indian Beauty. Made with 💚</p>
+      </div>
+    </footer>
+
+    <script>
+      function displayCart() {
+        const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+        const container = document.getElementById("cartItemsContainer");
+
+        if (cart.length === 0) {
+          container.innerHTML = `
+                    <div class="empty-cart">
+                        <p>Your cart is empty</p>
+                        <a href="/products" class="cta-button">Continue Shopping</a>
+                    </div>
+                `;
+          return;
+        }
+
+        let html = "";
+        let subtotal = 0;
+
+        cart.forEach((item, index) => {
+          const itemTotal = item.price * item.quantity;
+          subtotal += itemTotal;
+
+          html += `
+                    <div class="cart-item">
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                        <div class="cart-item-details">
+                            <h3>${item.name}</h3>
+                            <p>₹${item.price.toFixed(2)} × ${item.quantity}</p>
+                        </div>
+                        <div class="cart-item-price">₹${itemTotal.toFixed(2)}</div>
+                        <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
+                    </div>
+                `;
+        });
+
+        container.innerHTML = html;
+
+        // Update summary
+        const tax = subtotal * 0.1;
+        const total = subtotal + tax;
+
+        document.getElementById("subtotal").textContent =
+          "₹" + subtotal.toFixed(2);
+        document.getElementById("tax").textContent = "₹" + tax.toFixed(2);
+        document.getElementById("total").textContent = "₹" + total.toFixed(2);
+
+        updateCartCount();
+      }
+
+      function removeFromCart(index) {
+        let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+        cart.splice(index, 1);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        displayCart();
+      }
+
+      function validateCart() {
+        const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+        if (cart.length === 0) {
+          alert(
+            "Your cart is empty. Please add items before proceeding to checkout.",
+          );
+          return false;
+        }
+        return true;
+      }
+
+      function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+        const cartLink = document.querySelector(".cart-link");
+        const count = cart.length;
+        if (count > 0) {
+          if (!document.querySelector(".cart-count")) {
+            const countBadge = document.createElement("span");
+            countBadge.className = "cart-count";
+            countBadge.textContent = count;
+            cartLink.appendChild(countBadge);
+          } else {
+            document.querySelector(".cart-count").textContent = count;
+          }
+        } else {
+          const countBadge = document.querySelector(".cart-count");
+          if (countBadge) countBadge.remove();
+        }
+      }
+
+      displayCart();
+    </script>
+    <script>
+      (function () {
+        var path = window.location.pathname;
+        document
+          .querySelectorAll(".nav-links a:not(.cart-link)")
+          .forEach(function (link) {
+            var href = link.getAttribute("href");
+            if (
+              href === path ||
+              (href === "/products" &&
+                (path === "/products" || path === "/product"))
+            ) {
+              link.classList.add("active");
+            }
+          });
+      })();
+    </script>
+  </body>
+</html>

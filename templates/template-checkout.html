@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout - Kaya Kanti</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="/public/styles.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/" class="logo-link"
+          ><img
+            src="/public/kaya-kanti-logo.png"
+            alt="Kaya Kanti"
+            class="logo" /><img
+            src="/public/kaya-kanti-brand.png"
+            alt="Kaya Kanti Brand"
+            class="brand-name"
+        /></a>
+        <ul class="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/products">Products</a></li>
+          <li>
+            <a href="/cart" class="cart-link"
+              ><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+              Cart</a
+            >
+          </li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main style="background-color: var(--ivory)">
+      <section class="hero" style="padding: 16px 20px">
+        <div class="hero-content">
+          <h1
+            class="section-title"
+            style="
+              display: inline-block;
+              padding-bottom: 0.5rem;
+              font-size: 3.2rem;
+            "
+          >
+            Checkout
+          </h1>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="checkout-container">
+            <div>
+              <form id="checkoutForm" class="checkout-form">
+                <!-- Personal Information -->
+                <div class="form-section">
+                  <h3>Personal Information</h3>
+                  <div class="form-group">
+                    <label for="fullName">Full Name *</label>
+                    <input type="text" id="fullName" name="fullName" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" required />
+                  </div>
+                </div>
+
+                <!-- Shipping Address -->
+                <div class="form-section">
+                  <h3>Shipping Address</h3>
+                  <div class="form-group">
+                    <label for="address">Street Address *</label>
+                    <input type="text" id="address" name="address" required />
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="city">City *</label>
+                      <input type="text" id="city" name="city" required />
+                    </div>
+                    <div class="form-group">
+                      <label for="state">State/Province *</label>
+                      <input type="text" id="state" name="state" required />
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="zipcode">ZIP/Postal Code *</label>
+                      <input type="text" id="zipcode" name="zipcode" required />
+                    </div>
+                    <div class="form-group">
+                      <label for="country">Country *</label>
+                      <input type="text" id="country" name="country" required />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Billing Address (Same as Shipping) -->
+                <div class="form-section">
+                  <div class="form-group">
+                    <label
+                      style="
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 0.5rem;
+                        flex-wrap: nowrap;
+                        cursor: pointer;
+                      "
+                    >
+                      <input
+                        type="checkbox"
+                        id="sameAddress"
+                        checked
+                        style="flex-shrink: 0; width: 16px; height: 16px"
+                      />
+                      Billing address same as shipping
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Payment Method -->
+                <div class="form-section">
+                  <div style="display: flex; align-items: center; gap: 1rem">
+                    <h3 style="margin-bottom: 0">Payment Method</h3>
+                    <p
+                      style="
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 0.5rem;
+                        margin: 0;
+                      "
+                    >
+                      💵 Cash on Delivery
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Order Notes -->
+                <div class="form-section">
+                  <h3>Order Notes (Optional)</h3>
+                  <div class="form-group">
+                    <label for="notes">Special instructions or notes</label>
+                    <textarea
+                      id="notes"
+                      name="notes"
+                      style="
+                        width: 100%;
+                        padding: 0.75rem;
+                        border: 2px solid var(--light-green);
+                        border-radius: 4px;
+                        font-family: inherit;
+                        resize: vertical;
+                        min-height: 80px;
+                      "
+                    ></textarea>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <div>
+              <div class="order-summary-checkout">
+                <h3>Order Summary</h3>
+                <div id="orderItems"></div>
+
+                <div
+                  style="
+                    border-top: 2px solid #1a1a1a;
+                    margin: 1rem 0;
+                    padding-top: 1rem;
+                  "
+                >
+                  <div class="summary-row">
+                    <span class="summary-label">Subtotal</span>
+                    <span class="summary-value" id="checkoutSubtotal"
+                      >₹0.00</span
+                    >
+                  </div>
+                  <div class="summary-row">
+                    <span class="summary-label">Shipping</span>
+                    <span class="summary-value">Free</span>
+                  </div>
+                  <div class="summary-row">
+                    <span class="summary-label">Tax (10%)</span>
+                    <span class="summary-value" id="checkoutTax">₹0.00</span>
+                  </div>
+                  <div
+                    class="summary-row total"
+                    style="margin-top: 1rem; padding-top: 1rem"
+                  >
+                    <span>Total</span>
+                    <span id="checkoutTotal">₹0.00</span>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  class="place-order-btn"
+                  onclick="placeOrder()"
+                >
+                  Place Order
+                </button>
+                <a
+                  href="/cart"
+                  class="cta-button secondary-button"
+                  style="display: block; text-align: center; margin-top: 1rem"
+                  >Back to Cart</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>About Us</h4>
+          <p style="color: rgba(255, 255, 255, 0.8)">
+            We're dedicated to providing premium organic skincare and haircare
+            products that nourish your natural beauty.
+          </p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/products">Products</a></li>
+            <li><a href="/cart">Cart</a></li>
+            <li><a href="/checkout">Checkout</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Customer Service</h4>
+          <ul>
+            <li><a href="/contact">Contact Us</a></li>
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="/contact#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Connect With Us</h4>
+          <ul>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li>
+              <a href="https://www.pinterest.com/KayaKanti/">Pinterest</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Kaya Kanti. Celebrating Indian Beauty. Made with 💚</p>
+      </div>
+    </footer>
+
+    <script>
+      function displayOrderSummary() {
+        const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+        const itemsContainer = document.getElementById("orderItems");
+
+        if (cart.length === 0) {
+          window.location.href = "/products";
+          return;
+        }
+
+        let html = "";
+        let subtotal = 0;
+
+        cart.forEach((item) => {
+          const itemTotal = item.price * item.quantity;
+          subtotal += itemTotal;
+          html += `
+                    <div class="summary-item">
+                        <span>${item.name} × ${item.quantity}</span>
+                        <span>₹${itemTotal.toFixed(2)}</span>
+                    </div>
+                `;
+        });
+
+        itemsContainer.innerHTML = html;
+
+        // Update summary
+        const tax = subtotal * 0.1;
+        const total = subtotal + tax;
+
+        document.getElementById("checkoutSubtotal").textContent =
+          "₹" + subtotal.toFixed(2);
+        document.getElementById("checkoutTax").textContent =
+          "₹" + tax.toFixed(2);
+        document.getElementById("checkoutTotal").textContent =
+          "₹" + total.toFixed(2);
+
+        updateCartCount();
+      }
+
+      function placeOrder() {
+        const form = document.getElementById("checkoutForm");
+
+        // Validate form
+        if (!form.checkValidity()) {
+          alert("Please fill in all required fields.");
+          return;
+        }
+
+        const fullName = document.getElementById("fullName").value;
+        const email = document.getElementById("email").value;
+        const phone = document.getElementById("phone").value;
+        const address = document.getElementById("address").value;
+        const city = document.getElementById("city").value;
+
+        // Store order confirmation data
+        const orderData = {
+          customerName: fullName,
+          email: email,
+          phone: phone,
+          address: address,
+          city: city,
+          orderDate: new Date().toLocaleDateString(),
+          orderId:
+            "ORG" + Math.random().toString(36).substr(2, 9).toUpperCase(),
+        };
+
+        localStorage.setItem("lastOrder", JSON.stringify(orderData));
+
+        // Show confirmation
+        alert(
+          `Thank you for your order!\n\nOrder ID: ${orderData.orderId}\nA confirmation email has been sent to ${email}`,
+        );
+
+        // Clear cart
+        localStorage.removeItem("cart");
+
+        // Redirect to home
+        window.location.href = "/";
+      }
+
+      function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+        const cartLink = document.querySelector(".cart-link");
+        const count = cart.length;
+        if (count > 0) {
+          if (!document.querySelector(".cart-count")) {
+            const countBadge = document.createElement("span");
+            countBadge.className = "cart-count";
+            countBadge.textContent = count;
+            cartLink.appendChild(countBadge);
+          } else {
+            document.querySelector(".cart-count").textContent = count;
+          }
+        } else {
+          const countBadge = document.querySelector(".cart-count");
+          if (countBadge) countBadge.remove();
+        }
+      }
+
+      displayOrderSummary();
+    </script>
+    <script>
+      (function () {
+        var path = window.location.pathname;
+        document
+          .querySelectorAll(".nav-links a:not(.cart-link)")
+          .forEach(function (link) {
+            var href = link.getAttribute("href");
+            if (
+              href === path ||
+              (href === "/products" &&
+                (path === "/products" || path === "/product"))
+            ) {
+              link.classList.add("active");
+            }
+          });
+      })();
+    </script>
+  </body>
+</html>
