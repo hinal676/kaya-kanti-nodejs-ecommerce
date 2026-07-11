@@ -12,24 +12,24 @@ The project uses a **template-based rendering system** to generate dynamic HTML 
 
 It demonstrates fundamental backend concepts such as routing, file handling, server creation, and dynamic content rendering using Node.js.
 
-### ✨ Features
+### Features
 
-- ✅ Pure Node.js architecture (`http`, `fs`, `url`, `path` modules only)
-- ✅ Browser-side vanilla JavaScript for cart, checkout, and UI interactions
-- ✅ Google Fonts and Font Awesome loaded from CDN
-- ✅ Dynamic template rendering with placeholder replacement
-- ✅ Full e-commerce workflow: Browse → Product Details → Cart → Checkout
-- ✅ Responsive, luxury UI with Indian organic brand aesthetic (purple & gold)
-- ✅ Local storage–based persistent shopping cart
-- ✅ Product filtering by category (Skin Care, Hair Care)
-- ✅ Contact page
-- ✅ JSON API endpoint for products
-- ✅ Mobile-first responsive design
-- ✅ 404 & 500 error pages
+-  Pure Node.js architecture (`http`, `fs`, `url`, `path` modules only)
+-  Browser-side vanilla JavaScript for cart, checkout, and UI interactions
+-  Google Fonts and Font Awesome loaded from CDN
+-  Dynamic template rendering with placeholder replacement
+-  Full e-commerce workflow: Browse → Product Details → Cart → Checkout
+-  Responsive, luxury UI with Indian organic brand aesthetic (purple & gold)
+-  Local storage–based persistent shopping cart
+-  Product filtering by category (Skin Care, Hair Care)
+-  Contact page
+-  JSON API endpoint for products
+-  Mobile-first responsive design
+-  404 & 500 error pages
 
 ---
 
-## 🔧 Technologies Used
+## Technologies Used
 
 | Layer           | Technology                                         |
 | --------------- | -------------------------------------------------- |
@@ -42,7 +42,7 @@ It demonstrates fundamental backend concepts such as routing, file handling, ser
 | External assets | Google Fonts, Font Awesome, remote product imagery |
 | Dev Tool        | `nodemon` (auto-reload)                            |
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 KAYA-KANTI/
@@ -133,7 +133,7 @@ KAYA-KANTI/
 
 ---
 
-## 📍 Routes & Pages
+##  Routes & Pages
 
 ### Main Pages
 
@@ -161,7 +161,7 @@ KAYA-KANTI/
 
 ---
 
-## 🛍️ Product Data Structure
+##  Product Data Structure
 
 Each product in `products.json` follows this schema:
 
@@ -185,7 +185,7 @@ Each product in `products.json` follows this schema:
 
 ---
 
-## 🎨 Design & Styling
+##  Design & Styling
 
 ### Color Scheme
 
@@ -270,7 +270,7 @@ The cart is stored in the browser's **localStorage** and persists across session
 
 ---
 
-## 📦 Product Catalogue
+##  Product Catalogue
 
 17 products across two main categories:
 
@@ -303,7 +303,7 @@ The cart is stored in the browser's **localStorage** and persists across session
 
 ---
 
-## 💳 Checkout Flow
+##  Checkout Flow
 
 1. Review cart items on the **Cart** page
 2. Go to **Checkout** — fill in personal info and shipping address
@@ -313,7 +313,7 @@ The cart is stored in the browser's **localStorage** and persists across session
 
 ---
 
-## 🔐 Security
+##  Security
 
 - **Directory traversal protection** — static file paths are validated against `__dirname`
 - **Input validation** — product IDs are range-checked before lookup
@@ -322,7 +322,7 @@ The cart is stored in the browser's **localStorage** and persists across session
 
 ---
 
-## 🧪 Test URLs
+##  Test URLs
 
 ```
 http://localhost:8000/                    # Home page
@@ -338,7 +338,7 @@ http://localhost:8000/nonexistent         # 404 error page
 
 ---
 
-## 🐛 Troubleshooting
+##  Troubleshooting
 
 | Problem              | Solution                                                           |
 | -------------------- | ------------------------------------------------------------------ |
@@ -349,7 +349,7 @@ http://localhost:8000/nonexistent         # 404 error page
 
 ---
 
-## 📈 Future Enhancements
+##  Future Enhancements
 
 - [ ] Product search and category filtering
 - [ ] User authentication & accounts
@@ -362,19 +362,19 @@ http://localhost:8000/nonexistent         # 404 error page
 
 ---
 
-## 📄 License
+##  License
 
 ISC License
 
 ---
 
-## 👩‍💻 Author
+##  Author
 
 Built as a pure Node.js learning project — demonstrating full e-commerce functionality without any frameworks.
 
 ---
 
-## 🙏 Credits
+##  Credits
 
 - Product images: [Unsplash](https://unsplash.com/), [Pexels](https://pexels.com/), and brand websites
 - Architecture inspired by the "Node Farm" project pattern
