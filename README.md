@@ -4,7 +4,7 @@ A **Pure Node.js E-Commerce Web Application** for organic skincare and haircare 
 
 ---
 
-## 📋 Project Overview
+##  Project Overview
 
 **Kaya Kanti** is a dynamic e-commerce website developed using **core Node.js modules** without Express.js or third-party frameworks.
 
